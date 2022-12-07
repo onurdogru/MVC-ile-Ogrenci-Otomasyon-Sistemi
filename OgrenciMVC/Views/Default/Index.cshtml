@@ -1,0 +1,36 @@
+﻿@using OgrenciMVC.Models.EntityFramework
+@model List<TBLDERSLER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!--<h2>Burası Projenin Layout Dışındaki "Content" Alanı</h2>--->
+<table class="table table-bordered">
+    <tr>
+        <th>DERS ID</th>
+        <th>DERS ADI</th>
+        <!--sonradan eklendi-->
+        <th>İŞLEMLER</th>
+    </tr>
+    
+    <tbody>
+        @foreach (var drs in Model)
+            {
+                <tr>
+                    <td>@drs.DERSID</td>
+                    <td>@drs.DERSAD</td>
+                    <!--sonradan eklenen kısımlar-->
+                    <td>
+                        <a href="/Default/Sil/@drs.DERSID" class="btn btn-danger">Sil</a>
+                        <a href="/Default/DersGetir/@drs.DERSID" class="btn btn-success">Güncelle</a>
+                    </td>
+                </tr>
+            }
+    </tbody>
+
+</table>
+
+<!--Bu kısma bir buton ekleriz-->
+<a href="/Default/YeniDers" class="btn btn-primary">Yeni Ders Kaydı</a>
